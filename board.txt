@@ -1,0 +1,19 @@
+2,3
+I’m walking along a sandy beach. I hear the sounds of seagulls and the waves.
+Items:dead fish,seaweed
+S,E
+I’m walking along a sandy beach. I see a pirate ship in the distance.
+Items:sea shells,glass bottle
+N,E
+I’m in a flower garden. The smell of white ginger and jasmine blossoms is overwhelming.
+Items:none
+S,E,W
+I’m in a graveyard. It’s awfully spooky! I see headstones and a freshly dug grave. 
+Items:casket,skeleton
+N,W
+This is a beautiful pasture! There’s a donkey grazing and several baby horses chasing each other around a fenced in area.
+Items:horse poop,hay,horseshoe
+S,W
+A wide field stretches out before me. There are lots of animals here. Badgers, possums, weasels, and hummingbirds are all moving about quickly. A sign reads “Welcome to the meadow of tranquility.” 
+Items:half-eaten dead skunk
+N
