@@ -1,10 +1,12 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-// how do you exit the program
-// where should the player start
-// does look print just the description or does it also include the items in the room
-// how would you like us to denote when a room is empty
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1
+ * September 29, 2016
+ * 
+ */
 
 public class GameFacade {
 	static Board board;
@@ -34,7 +36,7 @@ public class GameFacade {
 
 	public static void main(String args[]) throws IOException
 	{
-		GameFacade game = new GameFacade("board.txt");
+		GameFacade game = new GameFacade("maze.txt");
 		while (running)
 		{
 			game.run();

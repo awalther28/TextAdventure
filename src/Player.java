@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1
+ * September 29, 2016
+ * 
+ */
 
 public class Player extends MazeObject {
 	public ArrayList<MazeObject> items;
@@ -134,7 +140,7 @@ public class Player extends MazeObject {
 	{
 		//http://stackoverflow.com/questions/10661482/remove-a-specific-word-from-a-string
 		// used this source to understand how to remove "take" from str
-		String item = str.replaceAll("\\s*\\btake\\b\\s*", "");
+		String item = str.replaceAll("\\s*\\btake\\b\\s*", "").trim();
 		boolean roomContainedItem = GameFacade.board.maze[this.y][this.x].removeItem(item);
 		if (roomContainedItem)
 		{
@@ -151,12 +157,14 @@ public class Player extends MazeObject {
 	//else the user is informed that they do not have the item
 	private void drop(String str)
 	{
-		Item item = new Item(str.replaceAll("\\s*\\btake\\b\\s*", ""));
 		
-		if( this.items.contains(item) )
+		Item item = new Item(str.replaceAll("\\s*\\bdrop\\b\\s*", "").trim());
+		
+		if( this.items.contains((MazeObject)item) )
 		{
 			GameFacade.board.maze[this.y][this.x].addItem(item);
 			this.items.remove(item);
+			System.out.println("You dropped " + item.toString());
 		}
 		else
 			System.out.println("You do not have that item, look again at your inventory.");

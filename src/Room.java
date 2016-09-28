@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1
+ * September 29, 2016
+ * 
+ */
 
 public class Room {
 	String description;

@@ -3,6 +3,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1
+ * September 29, 2016
+ * 
+ */
 
 public class Board {
 	int x;	//dimensions of board
