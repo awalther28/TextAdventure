@@ -3,18 +3,25 @@ import java.util.ArrayList;
 
 public class ItemsFactory {
 	
-	public static ArrayList<MazeObject> getItems(String items)
+	public static ArrayList<Item> getItems(String items)
 	{
 		String[] parse = items.split(":");
-		String[] parseItems = parse[0].split(",");
+		String[] parseItems = parse[1].split(",");
 		
-		ArrayList<MazeObject> mazeItems = new ArrayList<MazeObject>(parseItems.length);
+		ArrayList<Item> mazeItems = new ArrayList<Item>(parseItems.length);
 
 		for (String i: parseItems )
 		{
-			mazeItems.add(new MazeObject(i));		
+			if (! i.equals("none"))
+				mazeItems.add(new Item(i));		
 		}
 		return mazeItems;	
 	}
 
+//	public static void main(String[] args)
+//	{
+//		ArrayList<Item> items = ItemsFactory.getItems("Items:dead fish,seaweed");
+//		System.out.println(items.size());
+//		System.out.println(items);
+//	}
 }

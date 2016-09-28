@@ -1,43 +1,44 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-
+// how do you exit the program
+// where should the player start
+// does look print just the description or does it also include the items in the room
+// how would you like us to denote when a room is empty
 
 public class GameFacade {
-	//Tuple playerLocation;
 	static Board board;
-	//static Player player;
+	static Player player;
 	static boolean running;
 	
 	public GameFacade (String textFile) throws IOException
 	{
 		this.board = new Board(textFile);
-		//this.playerLocation = board.whereIsPlayer();
-		//this.player = new Player(this.playerLocation, 'U', 100, 100, 100, 100, 100);
+		this.player = new Player();
 		this.running = true;
 	}
 	
 	public void run()
 	{
-//		@SuppressWarnings("resource")
-//		Scanner in = new Scanner(System.in);
-//		String direction = in.next();
-//		while( !direction.equals("x") )
-//		{			
-//			this.playerLocation = this.player.move(direction);
-//			direction = in.next();
-//		}
-		
+		@SuppressWarnings("resource")
+		Scanner in = new Scanner(System.in);
+		String command = in.nextLine();
+		while( !command.equals("exit") )
+		{			
+			this.player.action(command);
+			command = in.nextLine();
+		}
+		this.running = false;
+		return;
 	}
 
 	public static void main(String args[]) throws IOException
 	{
 		GameFacade game = new GameFacade("board.txt");
-		System.out.println(game.board);
-//		while (running)
-//		{
-//			game.run();
-//		}
+		while (running)
+		{
+			game.run();
+		}
 	}
 }
 

@@ -21,7 +21,7 @@ public class Board {
 			this.y = Integer.parseInt(coordinates[0]);
 			this.maze = new Room[this.y][this.x];
 			
-			//create board using just strings for now
+			//create board
 			for (int i = 0; i < this.x; i ++)
 			{
 				for (int l = 0; l < this.y; l++)

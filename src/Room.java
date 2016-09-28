@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Room {
 	String description;
 	String shortDescription;
-	ArrayList<MazeObject> items;
+	ArrayList<Item> items;
 	String[] directions;
 	
 	
@@ -16,6 +16,41 @@ public class Room {
 		this.directions = direc.split(",");
 	}
 	
+	//parameter: String of the item description that you want removed
+	//return: boolean T-if item is removed, F-if not
+	public boolean removeItem(String itemDescription)
+	{
+		boolean removed = false;
+		removed = this.items.remove(new Item(itemDescription));
+		return removed;
+	}
+	
+	//adds item to the Room's list of items
+	public void addItem(Item thing)
+	{
+		this.items.add(thing);
+		return;
+	}
+	
+	//prints out description of the room and items it contains
+	public void playerEntersRoom()
+	{
+		System.out.println(this.description);
+		System.out.println(this.items);
+	}
+	
+	//parameter: string denoting a direction
+	//return: boolean T-if room has direction, F-if not
+	public boolean containsDirection(String string) {
+		for( int i = 0; i < this.directions.length; i ++ )
+		{
+			if (this.directions[i].equals(string))
+				return true;
+		}
+		return false;
+	}
+
+	//return: String of a shortened Room description
 	private String shortDescCalc()
 	{
 		String str = null;
@@ -38,17 +73,36 @@ public class Room {
 		return shortDescription;
 	}
 	
-	public ArrayList<MazeObject> getContents()
-	{
-		return this.items;
+	public String getDescription() {
+		return description;
 	}
-	
-	public void emptyRoom()
-	{
-		this.items = null;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
-	
-	
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<Item> items) {
+		this.items = items;
+	}
+
+	public String[] getDirections() {
+		return directions;
+	}
+
+	public void setDirections(String[] directions) {
+		this.directions = directions;
+	}
 }
 
