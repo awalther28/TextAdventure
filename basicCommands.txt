@@ -1,0 +1,34 @@
+Type any of the following items in "" to do the corresponding command.
+
+	"N" or "S" or "E" or "W" 
+		Entering one of these will move your player in that cardinal direction 
+	
+	"look"
+		When you enter a room, the description of the room will be displayed
+		followed by the items in the room that you can put in your inventory,
+		and the directions that you can move from that room. Use this command
+		to have the state of the room said again.
+	
+	"take <item in room>"
+		Use this command to pick up an item from the room you are in. The item
+		will be taken from the room and added to your inventory.
+	
+	"items"
+		Use this command to see the items you have in your inventory.
+		
+	"drop <item in your inventory>"
+		Use this command to remove an item from your inventory and drop it in
+		the room you are currently in.
+			
+	"save <what you want to save your game as>"	
+		Will save the current state of your game, that way you can pick up 
+		where you left off.				
+
+	"quit"
+		Use this command to safely exit from the game. The game does NOT save
+		before it quits. All progress will be lost unless you save before you
+		quit!
+		
+Depending on the adventure, there can be special commands that can be used. The 
+adventure creator will notify you when and what those commands are. To learn more
+about how to create your own text adventure please reference the README.txt.

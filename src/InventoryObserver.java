@@ -1,3 +1,9 @@
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1.2
+ * October 16, 2016
+ * 
+ */
 
 public class InventoryObserver {
 	Boolean activated;
@@ -58,11 +64,19 @@ public class InventoryObserver {
 					}
 					break;	
 				case("Win Game"):
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
 					System.out.println("Congrats! You won!!!!");
 					GameFacade.running = false;
 					break;
 				case("Lose Game"):
-					System.out.println("You lost...");
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
+					System.out.println("...you lost.");
 					GameFacade.running = false;
 					break;
 				case("Remove Barrier"):
@@ -87,6 +101,33 @@ public class InventoryObserver {
 		return false;
 	}
 
+	@Override
+	public String toString()
+	{
+		String acc = "";
+		acc += "Trigger \n";
+		if(this.activated)
+			acc+="Activated \n";
+		else
+			acc+="Not Activated \n";
+		acc+="Items In Inventory \n";
+		acc+=this.itemsToActivate.toString() + " \n";
+		acc+=this.effect + " \n";
+		if(this.room != null)
+		{
+			acc+=this.room;
+			if(this.effect.equals("Remove Barrier"))
+				acc+=","+this.direction;
+			acc+=" \n";
+		}
+		else
+			acc+="None \n";
+		acc+= this.textToRoom + " \n";
+		acc+= this.addItems.toString() + " \n";
+		acc+= this.removeItems.toString() + " \n";
+		acc+= this.textToPrint + " \n";	
+		return acc;
+	}
 
 	public Boolean getActivated() {
 		return activated;

@@ -8,8 +8,8 @@ import java.util.Hashtable;
 
 /**
  * @author Allison Walther
- * CSC 300 Project 1
- * September 29, 2016
+ * CSC 300 Project 1.2
+ * October 16, 2016
  * 
  */
 
@@ -96,7 +96,7 @@ public class Board {
 		}
 	}
 	
-	    //prints out maze
+	    //prints out maze FOR DEV USE ONLY
 		@Override
 		public String toString()
 		{
@@ -114,6 +114,9 @@ public class Board {
 			return line;
 		}
 		
+		//used for saving 
+		//TODO change this to toString to make everything fit better together
+			//TODO change save to call GameFacade.board.toString() instead of ....saveRoomString()
 		public String saveRoomString()
 		{
 			String roomInfo = "";
@@ -142,6 +145,8 @@ public class Board {
 			return this.maxItems;
 		}
 
+		//parameter: Tuple room and the direction from that room in which you want to remove a barrier
+		//removes the barrier and fixes the adjacent room's information accordingly
 		public void removeBarrier(Tuple room, String direction) {
 			int y = room.getFirst();
 			int x = room.getSecond();
@@ -166,6 +171,10 @@ public class Board {
 			}
 		}
 
+		//parameter: HashTable of room, item pair
+		//checks the rooms listed in the hashtable to see if they have it has the items
+		//returns true if all of the rooms contain all of the necessary items
+		//otherwise returns false
 		public boolean checkRooms(
 				Hashtable<Tuple, SpecialArrayList<Item>> roomItemHashTable) {
 			Enumeration<Tuple> allRooms = roomItemHashTable.keys();
@@ -183,6 +192,9 @@ public class Board {
 			return this.evaluateBooleanArray(booleanArray);
 		}
 		
+		//parameter: array of booleans
+		//returns true if the array is longer than 0 and all the booleans are true
+		//otherwise returns false
 		private boolean evaluateBooleanArray(boolean array[])
 		{
 			boolean bool = true;

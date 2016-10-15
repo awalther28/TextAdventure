@@ -1,5 +1,10 @@
 import java.util.ArrayList;
-
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1.2
+ * October 16, 2016
+ * 
+ */
 
 public class SpecialArrayList<T> extends ArrayList<T>{
 	
@@ -25,7 +30,8 @@ public class SpecialArrayList<T> extends ArrayList<T>{
 				acc += ",";
 				acc += this.get(i).toString();
 			}
+			return acc;
 		}
-		return acc;
+		return "None";
 	}
 }

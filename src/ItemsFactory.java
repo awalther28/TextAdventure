@@ -2,8 +2,8 @@
 
 /**
  * @author Allison Walther
- * CSC 300 Project 1
- * September 29, 2016
+ * CSC 300 Project 1.2
+ * October 16, 2016
  * 
  */
 
@@ -23,11 +23,4 @@ public class ItemsFactory {
 		}
 		return mazeItems;	
 	}
-
-//	public static void main(String[] args)
-//	{
-//		ArrayList<Item> items = ItemsFactory.getItems("Items:dead fish,seaweed");
-//		System.out.println(items.size());
-//		System.out.println(items);
-//	}
 }

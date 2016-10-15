@@ -1,5 +1,11 @@
+import java.util.Enumeration;
 import java.util.Hashtable;
-
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1.2
+ * October 16, 2016
+ * 
+ */
 
 public class RoomInventoryObserver {
 	Boolean activated;
@@ -59,11 +65,19 @@ public class RoomInventoryObserver {
 					}
 					break;	
 				case("Win Game"):
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
 					System.out.println("Congrats! You won!!!!");
 					GameFacade.running = false;
 					break;
 				case("Lose Game"):
-					System.out.println("You lost...");
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
+					System.out.println("...you lost.");
 					GameFacade.running = false;
 					break;
 				case("Remove Barrier"):
@@ -88,7 +102,9 @@ public class RoomInventoryObserver {
 		return false;
 	}
 	
-	//
+	//parameter: string from the text file
+	//parses text file string and creates a hashtable for rooms and their respective items
+	//TODO put this in the RoomInventoryObserverFactory
 	public void createRoomItemHashTable(String garbage) {
 		Hashtable<Tuple, SpecialArrayList<Item>> hT = new Hashtable<Tuple, SpecialArrayList<Item>>();
 		//clean up garbage string from text file
@@ -109,6 +125,49 @@ public class RoomInventoryObserver {
 		}
 		this.roomItemHashTable = hT;
 	}
+
+	@Override
+	public String toString()
+	{
+		String acc = "";
+		acc += "Trigger \n";
+		if(this.activated)
+			acc+="Activated \n";
+		else
+			acc+="Not Activated \n";
+		acc+="Items In Rooms \n";
+		acc+=this.specialHashTableToString();
+		acc+=this.effect + " \n";
+		if(this.room != null)
+		{
+			acc+=this.room;
+			if(this.effect.equals("Remove Barrier"))
+				acc+=","+this.direction;
+			acc+=" \n";
+		}
+		else
+			acc+="None \n";
+		acc+= this.textToRoom + " \n";
+		acc+= this.addItems.toString() + " \n";
+		acc+= this.removeItems.toString() + " \n";
+		acc+= this.textToPrint + " \n";	
+		return acc;
+	}
+	
+	//used by toString in order to save the state of the HashTable
+	private String specialHashTableToString() {
+		Enumeration<Tuple> allRooms = roomItemHashTable.keys();
+		String acc = "";
+		while(allRooms.hasMoreElements())
+		{
+			Tuple room = allRooms.nextElement();
+			SpecialArrayList<Item> items = roomItemHashTable.get(room);
+			acc+= room.toString()+":"+items.toString();
+		}
+		acc+= " \n";
+		return acc;
+	}
+
 
 	public Hashtable<Tuple, SpecialArrayList<Item>> getRoomItemHashTable() {
 		return roomItemHashTable;

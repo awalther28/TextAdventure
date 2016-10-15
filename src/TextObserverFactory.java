@@ -1,4 +1,9 @@
-
+/**
+ * @author Allison Walther
+ * CSC 300 Project 1.2
+ * October 16, 2016
+ * 
+ */
 public class TextObserverFactory {
 
 	

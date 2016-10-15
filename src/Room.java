@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 /**
  * @author Allison Walther
- * CSC 300 Project 1
- * September 29, 2016
+ * CSC 300 Project 1.2
+ * October 16, 2016
  * 
  */
 
@@ -17,7 +17,6 @@ public class Room {
 	public Room(String desc, String items, String direc)
 	{
 		this.description = desc;
-		this.shortDescription = shortDescCalc();
 		this.items = ItemsFactory.getItems(items);
 		String dir[] = direc.split(",");
 		this.directions = new SpecialArrayList<String>();
@@ -68,30 +67,16 @@ public class Room {
 	{
 		return this.directions.contains(string);
 	}
-
-	//return: String of a shortened Room description
-	private String shortDescCalc()
-	{
-		String str = null;
-		if (this.description.contains("sandy beach"))
-			str = "sandy beach";
-		if (this.description.contains("flower garden"))
-			str = "flower garden";
-		if (this.description.contains("graveyard"))
-			str = "graveyard";
-		if (this.description.contains("field"))
-			str = "field";
-		if (this.description.contains("pasture"))
-			str = "pasture";
-		return str;
-	}
 	
 	@Override
 	public String toString()
 	{
 		String acc = "";
 		acc += this.description + "\n";
-		acc += "Items:" + this.items + "\n";
+		if(this.items.size() > 0)
+			acc += "Items:" + this.items + "\n";
+		else
+			acc += "Items:none \n";
 		acc += this.directions + "\n";
 		return acc;
 	}
@@ -125,6 +110,8 @@ public class Room {
 	}
 
 	public void addDirection(String string) {
+		if(this.directions.contains("none") && !string.equals("none"))
+			this.directions.remove("none");
 		this.directions.add(string);
 	}
 

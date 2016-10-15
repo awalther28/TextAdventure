@@ -23,43 +23,8 @@
 					                                                                          
 Who doesn't remember the text adventure classics like "Adventureland" and Zork I"? 
 (If you don't, that's okay.) This text adventure emulator allows you to create and
-play unique, customizable text adventures. While the story line is up to you, some
-commands are written in stone. The are as follows:
-
-	"N" or "S" or "E" or "W" 
-		Entering one of these will move your player in that cardinal direction 
-	
-	"look"
-		When you enter a room, the description of the room will be displayed
-		followed by the items in the room that you can put in your inventory,
-		and the directions that you can move from that room. Use this command
-		to have the state of the room said again.
-	
-	"take <item in room>"
-		Use this command to pick up an item from the room you are in. The item
-		will be taken from the room and added to your inventory.
-	
-	"items"
-		Use this command to see the items you have in your inventory.
-		
-	"drop <item in your inventory>"
-		Use this command to remove an item from your inventory and drop it in
-		the room you are currently in.
-			
-	"save"	
-		Will save the current state of your game, that way you can pick up 
-		where you left off.				
-
-	"quit"
-		Use this command to safely exit from the game.
-		
-Depending on the adventure, there can be special commands that can be used. The 
-adventure creator will notify you when and what those commands are. To learn more
-about how to create your own text adventure please reference the README.txt.
-
-To load a previous text adventure type "load <name of saved game>".
-Otherwise type "start" to begin.
-
-
+play unique, customizable text adventures. Below is a list of games to play: start a
+new adventure or pick up where you left off. Type the name of the file you want to 
+start playing!
 
 				

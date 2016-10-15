@@ -1,10 +1,18 @@
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.util.List;
 import java.util.ArrayList;
 
 /**
  * @author Allison Walther
- * CSC 300 Project 1
- * September 29, 2016
+ * CSC 300 Project 1.2
+ * October 16, 2016
  * 
  */
 
@@ -80,6 +88,9 @@ public class Player extends MazeObject {
 		case "items":
 			printItems();
 			break;
+		case "save":
+			saveGame(str);
+			break;
 		default: 
 			Boolean success = notifyTextObserver(str);
 			if (!success)
@@ -89,6 +100,51 @@ public class Player extends MazeObject {
 		return;
 		}
 	
+	//parameter: entire string from the command line
+	//saves the current state of the game to a text file that chosen by the user
+	//if no text file exists, one is created
+	//if one does exist, it is overwritten
+	private void saveGame(String command) {
+		String str[] = command.split(" ");
+		//make sure that the user gave you something to save it by
+		if (str.length > 1) 
+		{
+			String fileName = str[1];
+			try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(
+			              new FileOutputStream("./"+fileName+".txt"), "utf-8")))
+			{
+				writer.write(GameFacade.board.y+","+GameFacade.board.x);
+				writer.newLine();
+				writer.write(GameFacade.board.saveRoomString());
+				writer.write(this.y+","+this.x);
+				writer.newLine();
+				writer.write(this.maxItems+"");
+				writer.newLine();
+				for(InventoryObserver i: this.inventoryObservers)
+				{
+					writer.write(i.toString());
+				}
+				for(TextObserver i: this.textObservers)
+				{
+					writer.write(i.toString());
+				}
+				for(RoomInventoryObserver i: this.roomInventoryObservers)
+				{
+					writer.write(i.toString());
+				}
+				writer.write("Previously");
+				writer.newLine();
+				writer.write("Items:"+this.items.toString());
+				writer.close();
+			} catch ( IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else
+			System.out.println("Could not save game; you did not specify a name. Try 'save <fileName>' \n");
+	}
+
 	//parameter: String of the desired direction a player wants to move towards
 	//this function checks the boundaries of the maze, 
 	//if the move is legally within the bounds and next Room permits you to move there, the player enters the new room, a description of it is printed
