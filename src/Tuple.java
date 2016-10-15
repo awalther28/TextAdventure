@@ -21,4 +21,32 @@ public class Tuple {
 	{
 		System.out.println(this.first + ", " + this.second);
 	}
+	
+	public int getFirst()
+	{
+		return this.first;
+	}
+	
+	public int getSecond()
+	{
+		return this.second;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tuple other = (Tuple) obj;
+		if (first != other.first)
+			return false;
+		if (second != other.second)
+			return false;
+		return true;
+	}
+	
+	
 }

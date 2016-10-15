@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Room {
 	String description;
 	String shortDescription;
-	ArrayList<Item> items;
-	String[] directions;
+	SpecialArrayList<Item> items;
+	SpecialArrayList<String> directions;
 	
 	
 	public Room(String desc, String items, String direc)
@@ -19,7 +19,12 @@ public class Room {
 		this.description = desc;
 		this.shortDescription = shortDescCalc();
 		this.items = ItemsFactory.getItems(items);
-		this.directions = direc.split(",");
+		String dir[] = direc.split(",");
+		this.directions = new SpecialArrayList<String>();
+		for(int i = 0; i < dir.length; i ++)
+		{
+			this.directions.add(dir[i]);
+		}
 	}
 	
 	//parameter: String of the item description that you want removed
@@ -38,22 +43,30 @@ public class Room {
 		return;
 	}
 	
+	public void addAllItems(SpecialArrayList<Item> stuff)
+	{
+		this.items.addAll(stuff);
+		return;
+	}
+	
+	public void removeAllItems(SpecialArrayList<Item> stuff)
+	{
+		this.items.removeAll(stuff);
+		return;
+	}
 	//prints out description of the room and items it contains
 	public void playerEntersRoom()
 	{
 		System.out.println(this.description);
 		System.out.println(this.items);
+		System.out.println(this.directions);
 	}
 	
 	//parameter: string denoting a direction
 	//return: boolean T-if room has direction, F-if not
-	public boolean containsDirection(String string) {
-		for( int i = 0; i < this.directions.length; i ++ )
-		{
-			if (this.directions[i].equals(string))
-				return true;
-		}
-		return false;
+	public boolean containsDirection(String string) 
+	{
+		return this.directions.contains(string);
 	}
 
 	//return: String of a shortened Room description
@@ -76,7 +89,11 @@ public class Room {
 	@Override
 	public String toString()
 	{
-		return shortDescription;
+		String acc = "";
+		acc += this.description + "\n";
+		acc += "Items:" + this.items + "\n";
+		acc += this.directions + "\n";
+		return acc;
 	}
 	
 	public String getDescription() {
@@ -99,16 +116,20 @@ public class Room {
 		return items;
 	}
 
-	public void setItems(ArrayList<Item> items) {
+	public void setItems(SpecialArrayList<Item> items) {
 		this.items = items;
 	}
 
-	public String[] getDirections() {
-		return directions;
+	public void addText(String textToRoom) {
+		this.description = this.description + " " + textToRoom;
 	}
 
-	public void setDirections(String[] directions) {
-		this.directions = directions;
+	public void addDirection(String string) {
+		this.directions.add(string);
+	}
+
+	public boolean containsItems(SpecialArrayList<Item> stuff) {
+		return this.items.containsAll(stuff);
 	}
 }
 

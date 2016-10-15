@@ -1,19 +1,81 @@
 2,3
-I’m walking along a sandy beach. I hear the sounds of seagulls and the waves.
+I'm walking along a sandy beach.  I hear the sounds of seagulls and the waves.
 Items:dead fish,seaweed
 S,E
-I’m walking along a sandy beach. I see a pirate ship in the distance.
+I'm walking along a sandy beach.  I see a pirate ship in the distance.
 Items:sea shells,glass bottle
 N,E
-I’m in a flower garden. The smell of white ginger and jasmine blossoms is overwhelming.
+I'm in a flower garden.  The smell of white ginger and jasmine blossoms is overwhelming.
 Items:none
 S,E,W
-I’m in a graveyard. It’s awfully spooky! I see headstones and a freshly dug grave. 
+I'm in a graveyard.  Itís awfully spooky!  I see headstones and a freshly dug grave.
 Items:casket,skeleton
 N,W
-This is a beautiful pasture! There’s a donkey grazing and several baby horses chasing each other around a fenced in area.
+This is a beautiful pasture!  Thereís a donkey grazing and several baby horses chasing each other around a fenced in area.
 Items:horse poop,hay,horseshoe
 S,W
-A wide field stretches out before me. There are lots of animals here. Badgers, possums, weasels, and hummingbirds are all moving about quickly. A sign reads “Welcome to the meadow of tranquility.” 
+A wide field stretches out before me.  There are lots of animals here.  Badgers, possums, weasels, and hummingbirds are all moving about quickly.  A sign reads ìWelcome to the meadow of tranquility.î
 Items:half-eaten dead skunk
 N
+0,0
+4
+Trigger
+Not Activated
+Enter Text
+eat half-eaten dead skunk
+Lose Game
+None
+None
+None
+None
+The skunk made you sick and you died.  Why the hell would you eat a dead skunk?  Sometimes you get what you deserve!  Oh, and btw, you LOSE!  Game over!
+Trigger
+Not Activated
+Enter Text
+examine skeleton
+Add Item To Game
+0,0
+None
+skeleton key
+None
+When you look closely at the skeleton, you accidentally bump into it.  Something clinks and you see a key fall to the ground!  I bet it's a skeleton key!
+Trigger
+Not Activated
+Enter Text
+remove
+Delete Item From Game
+0,0
+No skeleton key here
+None
+skeleton key
+None
+Trigger
+Not Activated
+Enter Text
+fuuck
+Lose Game
+None
+None
+None
+None
+You LOST, YOU LOST DAMMMNIT!
+Trigger 
+Not Activated
+Items In Inventory
+hay,seaweed
+Delete Item From Game
+0,0
+None
+None
+None
+I think it worked?
+Trigger
+Not Activated
+Items In Rooms
+1,2:hay
+Remove Barrier
+1,2,W
+None
+None
+None
+None

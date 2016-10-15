@@ -1,0 +1,111 @@
+3,3
+Hold your breathe it's the bathroom... oh wait, I guess the smell isn't that bad.
+Items:toothbrush,hairbrush,used dental floss
+S
+Huh this is just a long hallway. There's a door at the end, I wonder where it leads.
+Items:none
+N,S,E
+This must be the piano parlor. What's a creepy witch mansion without a piano parlor?
+Items:vase,metrynom,sheet music,Beethoven bust
+N,E
+Ah ha! You finally made it into the bedroom.
+Items:none
+none
+There are dead animals hanging all over the walls! Weird witch.
+Items:small animal pelt,jar of teeth,jar of eyeballs
+W,E,S
+The foyer: this house smells cursed. There's a big open book with a pen next to it. If you'd like to sign in, type "sign the book".
+Items:umbrella
+N,W,E
+What a magnificent kitchen: stainless steel appliances, marble countertops, Peruvian wood flooring! Oh and there's a giant cauldron in the middle. Once you have all of the ingredients for the potion, type "make potion" to make the potion. 
+Items:ladle,chicken eggs
+S
+This must be the dining room. There's a weird smell coming from the West, how could anyone eat in here?
+Items:candle stick,dinner plate,knife,spoon,glass goblet
+N,S,W
+The windows in the reading room allow light to shine in, illuminating the paintings on the walls. Is it just me or are the eye's on the painting's looking at me?
+Items:Witch's Weekly,Bleeder's Digest For Vampires ONLY,Salem Times,Potions for Dummies
+N,W
+2,1
+10
+Trigger
+Not Activated
+Items In Inventory
+candle stick,small animal pelt,sheet music,hairbrush
+Add Item To Game
+0,0
+None
+None
+None
+You have collected all of the items for the potion! Go to the kitchen to mix it all up!
+Trigger
+Not Activated
+Items In Rooms
+0,2:candle stick,small animal pelt,sheet music,hairbrush
+Add Item To Game
+0,2
+None
+potion,potion
+None
+The ground starts to shake, the contents of the cauldron start to melt and boil... Something is happening!
+Trigger
+Not Activated
+Items In Rooms
+0,2:candle stick,small animal pelt,sheet music,hairbrush
+Delete Item From Game
+0,2
+None
+None
+candle stick,small animal pelt,sheet music,hairbrush
+None
+Trigger
+Not Activated
+Items In Inventory
+potion
+Add Item To Game
+0,0
+None
+None
+None
+Type "drink potion" to be able to walk through locked doors.
+Trigger
+Not Activated
+Enter Text
+drink potion
+Remove Barrier
+1,1,N
+None
+None
+None
+I think it worked, you can now walk through locked doors.
+Trigger
+Not Activated
+Items In Rooms
+0,1:potion
+Win Game
+None
+None
+None
+None
+None
+PRINT
+You are walking by a house and you hear screams, you think nothing of it because 
+Halloween is around the corner. Then a paper airplane lands at you feet. It reads: 
+	"	Listen, I'm in a pickle. I want to start by saying never marry a witch! 
+	To cut the long story short, my ex witch of a wife cast a spell on my
+	bedroom door--I'm afraid that it is locked for eternity.
+		 She left her spell book here, and I found a recipe for a potion
+	that allows people to walk through walls! I know I have all of the 
+	ingredients in my house. Please go around and collect the items,
+	I'll give you more instructions when you collect them all. Also,
+	let me apologize in advance for the riddles, potion books are 
+	notoriously cryptic. Here's what the recipe calls for:
+		- sheet music
+		- candle stick
+		- small animal pelt
+		- hairbrush
+	Please try to hurry, I've been trapped in here for a few days and I
+	am without water and food."
+After reading the plea of a scorned ex-witch's lover, you take it upon
+yourself to help the poor sap out.
+END

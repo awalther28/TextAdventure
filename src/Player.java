@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -8,19 +9,43 @@ import java.util.ArrayList;
  */
 
 public class Player extends MazeObject {
-	public ArrayList<MazeObject> items;
+	public SpecialArrayList<Item> items;
 	public Tuple location;
 	public int x;
 	public int y;
+	private List<TextObserver> textObservers = new ArrayList<TextObserver>();
+	private List<InventoryObserver> inventoryObservers = new ArrayList<InventoryObserver>();
+	private List<RoomInventoryObserver> roomInventoryObservers = new ArrayList<RoomInventoryObserver>();
+	public int maxItems;
+	
 	
 	public Player() {
 		super("player");
-		this.items = new ArrayList<MazeObject>();
-		this.location = new Tuple(0,0);
-		this.x = this.location.first;
-		this.y = this.location.second;
+		this.items = new SpecialArrayList<Item>();
 	}
 	
+	public Tuple getLocation() {
+		return location;
+	}
+
+	public void setLocation(Tuple location) {
+		this.location = location;
+		this.x = location.second;
+		this.y = this.location.first;
+	}
+
+	public List<TextObserver> getTextObservers() {
+		return textObservers;
+	}
+
+	public int getMaxItems() {
+		return maxItems;
+	}
+
+	public void setMaxItems(int maxItems) {
+		this.maxItems = maxItems;
+	}
+
 	//parameter: String of the input from the console
 	//action evaluates the console input and acts accordingly
 	//this could be moving the player around the maze, dropping an item, picking up an item, checking at items, looking at the room description
@@ -43,9 +68,11 @@ public class Player extends MazeObject {
 			break;
 		case "take":
 			take(str);
+			notifyInventoryObserver(this.items);
 			break;
 		case "drop":
 			drop(str);
+			notifyRoomInventoryObserver();
 			break;
 		case "look":
 			look();
@@ -54,7 +81,9 @@ public class Player extends MazeObject {
 			printItems();
 			break;
 		default: 
-			System.out.println("I'm sorry. I don't understand you");
+			Boolean success = notifyTextObserver(str);
+			if (!success)
+				System.out.println("I'm sorry. I don't understand you");
 			break;
 		}
 		return;
@@ -76,6 +105,7 @@ public class Player extends MazeObject {
 					GameFacade.board.maze[(this.y-1)][this.x].playerEntersRoom();
 					this.location = new Tuple((this.y-1), this.x);
 					this.y = this.y - 1;		
+					GameFacade.board.setPlayerLocation(this.location);
 				}
 				else 
 					System.out.println("Sorry--there is a wall. \n\n");
@@ -91,6 +121,7 @@ public class Player extends MazeObject {
 					GameFacade.board.maze[(this.y+1)][this.x].playerEntersRoom();
 					this.location = new Tuple((this.y+1), this.x);
 					this.y = this.y + 1;
+					GameFacade.board.setPlayerLocation(this.location);
 				}
 				else 
 					System.out.println("Sorry--there is a wall. \n\n");
@@ -106,6 +137,7 @@ public class Player extends MazeObject {
 					GameFacade.board.maze[this.y][this.x+1].playerEntersRoom();
 					this.location = new Tuple(this.y, this.x+1);
 					this.x = this.x + 1;
+					GameFacade.board.setPlayerLocation(this.location);
 				}
 				else 
 					System.out.println("Sorry--there is a wall. \n\n");
@@ -121,6 +153,7 @@ public class Player extends MazeObject {
 					GameFacade.board.maze[this.y][this.x-1].playerEntersRoom();
 					this.location = new Tuple(this.y, this.x-1);
 					this.x = this.x - 1;
+					GameFacade.board.setPlayerLocation(this.location);
 				}
 				else 
 					System.out.println("Sorry--there is a wall. \n\n");
@@ -142,13 +175,18 @@ public class Player extends MazeObject {
 		// used this source to understand how to remove "take" from str
 		String item = str.replaceAll("\\s*\\btake\\b\\s*", "").trim();
 		boolean roomContainedItem = GameFacade.board.maze[this.y][this.x].removeItem(item);
-		if (roomContainedItem)
+		if (this.items.size() < this.maxItems)
 		{
-			this.items.add(new Item(item));
-			System.out.println("Picked up "+ item);
+			if (roomContainedItem)
+			{
+				this.items.add(new Item(item));
+				System.out.println("Picked up "+ item);
+			}
+			else
+				System.out.println("This room does not contain that object.");
 		}
 		else
-			System.out.println("This room does not contain that object.");
+			System.out.println("Your inventory is full.");
 		return;	
 	}
 	
@@ -183,6 +221,61 @@ public class Player extends MazeObject {
 	{
 		GameFacade.board.maze[this.y][this.x].playerEntersRoom();
 		return;
+	}
+	
+	
+	//**OBSERVER STUFF**
+	
+	//TextObserver--"Enter Text"
+	public void attachTextObserver(TextObserver observer)
+	{
+		this.textObservers.add(observer);
+	}
+	
+	public Boolean notifyTextObserver(String text)
+	{
+		Boolean bool = false;
+		for(TextObserver i: this.textObservers)
+		{
+			bool = bool | i.update(text);
+		}
+		return bool;
+	}
+	
+	//InventoryObserver--"Items in Inventory"
+	public void attachInventoryObserver(InventoryObserver observer)
+	{
+		this.inventoryObservers.add(observer);
+	}
+	
+	public Boolean notifyInventoryObserver(SpecialArrayList<Item> items2)
+	{
+		Boolean bool = false;
+		for(InventoryObserver i: this.inventoryObservers)
+		{
+			bool = bool | i.update(items2);
+		}
+		return bool;
+	}
+	
+	//RoomInventoryObserver--"Items in Room"
+	public void attachRoomInventoryObserver(RoomInventoryObserver observer)
+	{
+		this.roomInventoryObservers.add(observer);
+	}
+	
+	public Boolean notifyRoomInventoryObserver()
+	{
+		Boolean bool = false;
+		for(RoomInventoryObserver i: this.roomInventoryObservers)
+		{
+			bool = bool | i.update();
+		}
+		return bool;
+	}
+
+	public void setItems(SpecialArrayList<Item> items2) {
+		this.items = items2;	
 	}
 
 }

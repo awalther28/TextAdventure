@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 /**
  * @author Allison Walther
@@ -9,16 +9,16 @@ import java.util.ArrayList;
 
 public class ItemsFactory {
 	
-	public static ArrayList<Item> getItems(String items)
+	public static SpecialArrayList<Item> getItems(String items)
 	{
 		String[] parse = items.split(":");
 		String[] parseItems = parse[1].split(",");
 		
-		ArrayList<Item> mazeItems = new ArrayList<Item>(parseItems.length);
+		SpecialArrayList<Item> mazeItems = new SpecialArrayList<Item>();
 
 		for (String i: parseItems )
 		{
-			if (! i.equals("none"))
+			if (! i.equalsIgnoreCase("none"))
 				mazeItems.add(new Item(i));		
 		}
 		return mazeItems;	
