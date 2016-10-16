@@ -22,7 +22,7 @@ public class TextFileFilter {
         ArrayList<String> fileNames = new ArrayList<String>(); ;
         for(File i : files)
         {
-        	if (!i.getName().equals("title.txt") && !i.getName().equals("basicCommands.txt") && !i.getName().equals("loading.txt"))
+        	if (!i.getName().equals("title.txt") && !i.getName().equals("basicCommands.txt") && !i.getName().equals("loading.txt") && !i.getName().equals("README.txt"))
         	{
         		fileNames.add(i.getName());
         	}

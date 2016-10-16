@@ -22,7 +22,6 @@ public class InventoryObserver {
 	{
 		this.subject = subject;
 		this.subject.attachInventoryObserver(this);
-		this.activated = false;
 	}
 	
 	
@@ -80,24 +79,29 @@ public class InventoryObserver {
 					GameFacade.running = false;
 					break;
 				case("Remove Barrier"):
-				{
-					int y = this.room.getFirst();
-					int x = this.room.getSecond();
-					GameFacade.board.removeBarrier(this.room, this.direction);
-					if (!this.textToRoom.equals("None"))
 					{
-						GameFacade.board.maze[y][x].addText(this.textToRoom);
+						int y = this.room.getFirst();
+						int x = this.room.getSecond();
+						GameFacade.board.removeBarrier(this.room, this.direction);
+						if (!this.textToRoom.equals("None"))
+						{
+							GameFacade.board.maze[y][x].addText(this.textToRoom);
+						}
+						if (!this.textToPrint.equals("None"))
+						{
+							System.out.println(this.textToPrint);
+						}
 					}
-					if (!this.textToPrint.equals("None"))
+					break;
+				case("Print"):
 					{
 						System.out.println(this.textToPrint);
+						break;
 					}
 				}
-				break;
+				this.activated = true;
+				return true;		
 			}
-			this.activated = true;
-			return true;		
-		}
 		return false;
 	}
 

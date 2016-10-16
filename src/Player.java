@@ -62,7 +62,7 @@ public class Player extends MazeObject {
 		String command[] = str.split(" ");
 		switch(command[0])
 		{
-		case "N":
+		case ("N"):
 			move(command[0]);
 			break;
 		case "S":
@@ -135,7 +135,11 @@ public class Player extends MazeObject {
 				writer.write("Previously");
 				writer.newLine();
 				writer.write("Items:"+this.items.toString());
+				writer.newLine();
+			    if (GameFacade.board.hasPreface())
+			    	writer.write(GameFacade.board.prefaceToString());
 				writer.close();
+				System.out.println("Your game has been saved as: "+fileName+".txt");
 			} catch ( IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -230,9 +234,9 @@ public class Player extends MazeObject {
 		//http://stackoverflow.com/questions/10661482/remove-a-specific-word-from-a-string
 		// used this source to understand how to remove "take" from str
 		String item = str.replaceAll("\\s*\\btake\\b\\s*", "").trim();
-		boolean roomContainedItem = GameFacade.board.maze[this.y][this.x].removeItem(item);
 		if (this.items.size() < this.maxItems)
 		{
+			boolean roomContainedItem = GameFacade.board.maze[this.y][this.x].removeItem(item);
 			if (roomContainedItem)
 			{
 				this.items.add(new Item(item));
@@ -242,7 +246,7 @@ public class Player extends MazeObject {
 				System.out.println("This room does not contain that object.");
 		}
 		else
-			System.out.println("Your inventory is full.");
+			System.out.println("Your inventory is full. Enter 'drop <item>' to drop an item in order to free up space.");
 		return;	
 	}
 	

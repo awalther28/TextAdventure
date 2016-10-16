@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -19,6 +20,7 @@ public class Board {
 	Room[][] maze;
 	Tuple playerLocation;
     int maxItems;
+    ArrayList<String> preface;
 	
 	public Board(String textFile) throws IOException
 	{
@@ -42,9 +44,9 @@ public class Board {
 			}
 			
 			//parse for player's starting location
+			//set location after we create triggers and check for preface
+			//we do this so that the preface will be read first then the room description of the room will be read 
 			String playerStart[] = stream.readLine().split(",");
-			this.playerLocation = new Tuple(Integer.parseInt(playerStart[0]), Integer.parseInt(playerStart[1]));
-			GameFacade.player.setLocation(this.playerLocation);
 			
 			this.maxItems = Integer.parseInt(stream.readLine());
 			GameFacade.player.setMaxItems(this.maxItems);
@@ -73,19 +75,36 @@ public class Board {
 				if (s.equals("Previously"))
 				{
 					GameFacade.player.setItems(ItemsFactory.getItems(stream.readLine()));
+					s = stream.readLine();
 				}
+				
+				ArrayList<String> acc = new ArrayList<String>();
 				//used to give introduction to text adventure
+				//TODO figure out why it isn't comparing correctly
 				if (s.equals("PRINT"))
 				{
+					acc.add(s);
 					s = stream.readLine();
+					acc.add(s);
+					
 					while(!s.equals("END"))
 					{
 						System.out.println(s);
 						s = stream.readLine();
+						acc.add(s);
 					}
 				}
+				if(acc.size() > 2)
+					this.preface = acc;
+				if(acc.size() < 2)
+					this.preface = null;
+				
 				s = stream.readLine();
 			}
+			
+			//set player location now after preface has been read
+			this.playerLocation = new Tuple(Integer.parseInt(playerStart[0]), Integer.parseInt(playerStart[1]));
+			GameFacade.player.setLocation(this.playerLocation);
 			
 			fileReader.close();
 			stream.close();
@@ -128,6 +147,27 @@ public class Board {
 				}
 			}
 			return roomInfo;	
+		}
+		
+		public String prefaceToString()
+		{
+			String prefaceInfo = "";
+			String line;
+			for (int i = 0; i < this.preface.size(); i++)
+			{
+				line = this.preface.get(i);
+				if(line.equals("PRINT"))
+				{
+					prefaceInfo += line + "\n";
+					//https://www.mkyong.com/java/how-to-get-current-timestamps-in-java/
+					//used link to create timestamp
+					Timestamp timestamp = new Timestamp(new java.util.Date().getTime());
+					prefaceInfo += "Last time played: " + timestamp + "\n\n";
+				}
+				else
+					prefaceInfo += line + "\n";
+			}
+			return prefaceInfo;
 		}
 		
 		public Tuple getPlayerLocation()
@@ -203,6 +243,12 @@ public class Board {
 				bool = bool && i;
 			}
 			return bool && (array.length>0);
+		}
+
+		public boolean hasPreface() {
+			if(this.preface == null)
+				return false;
+			return true;
 		}
 
 }

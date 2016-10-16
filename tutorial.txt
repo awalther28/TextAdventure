@@ -1,0 +1,65 @@
+2,4
+You are in a room. If you want to move to a different room, type "S" or "E" (CASE SENSITIVE).
+Items:none
+S,E
+You changed rooms! You are South of the room you originally started in! Try moving again.
+Items:none
+N,E
+You changed rooms! You are East of the room you originally started in! Try moving again.
+Items:none
+S,W,E
+The items in this room are listed below. Take them by entering "take <item>". A warning, there is a limit to how many items you can take.
+Items:half eaten dead skunk
+N,W,E
+There is a wall to the east, to walk through it you need a special key. To look at your items, type "items".
+Items:none
+S,W
+There's something you should pick up in this room. To have the room description read again, type "look". 
+Items:special key
+N,W
+Yay, you made it to the super secret room! To win the game, use the "drop <item>" command to drop your key at the farthest south part of this room.
+Items:none
+S
+You moved to the farther part south of this room.
+Items:none
+N
+0,0
+1
+Trigger
+Not Activated
+Items In Rooms
+1,3:special key
+Add Item To Game
+1,3
+None
+README.txt file
+None
+C'mon, you couldn't have thought winning would be that simple. I dropped a README.txt file in this room, bring it back to where you began to beat the tutorial.
+Trigger
+Not Activated
+Enter Text
+read README.txt file
+Win Game
+0,0
+None
+None
+None
+None
+Trigger
+Not Activated
+Items In Inventory
+special key
+Remove Barrier
+0,2,E
+ You removed the wall!
+None
+None
+You removed the barrier room 5 and the super secret room!
+PRINT
+Dave: Heyo River! Welcome to Alli's Text Adventure Emulator! This is a tutorial,
+feel free to walk around the maze and get a better feel for how the game works.
+
+Alli: Try to enter a command. Type the command you want to do, then hit enter 
+to do said command.
+
+END

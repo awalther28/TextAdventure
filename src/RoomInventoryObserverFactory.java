@@ -9,6 +9,12 @@ public class RoomInventoryObserverFactory {
 	public static void createRoomInventoryObserver(String[] information) {
 		RoomInventoryObserver roomInventoryObs = new RoomInventoryObserver(GameFacade.player);
 		
+		//has it been activated
+		if(information[0].equals("Activated"))
+			roomInventoryObs.setActivated(true);
+		else
+			roomInventoryObs.setActivated(false);
+		
 		roomInventoryObs.createRoomItemHashTable(information[2]);
 		roomInventoryObs.setEffect(information[3]);
 		

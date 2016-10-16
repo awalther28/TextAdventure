@@ -10,6 +10,12 @@ public class InventoryObserverFactory {
 	public static void createInventoryObserver(String[] information) {
 		InventoryObserver inventoryObs = new InventoryObserver(GameFacade.player);
 		
+		//has it been activated
+		if(information[0].equals("Activated"))
+			inventoryObs.setActivated(true);
+		else
+			inventoryObs.setActivated(false);
+		
 		//create list of items that will activate trigger
 		String itemsToActivate = "Items:" + information[2]; //doing this to match item factory parsing
 		inventoryObs.setItemsToActivate(ItemsFactory.getItems(itemsToActivate));

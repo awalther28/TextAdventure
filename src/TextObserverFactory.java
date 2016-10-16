@@ -10,6 +10,13 @@ public class TextObserverFactory {
 	public static TextObserver createTextObserver(String[] information)
 	{
 		TextObserver txtObs = new TextObserver(GameFacade.player);
+		
+		//has it been activated
+		if(information[0].equals("Activated"))
+			txtObs.setActivated(true);
+		else
+			txtObs.setActivated(false);
+		
 		txtObs.setTextToActivate(information[2]);
 		txtObs.setEffect(information[3]);
 		

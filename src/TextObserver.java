@@ -21,80 +21,88 @@ public class TextObserver { //extends Observer {
 	{
 		this.subject = subject;
 		this.subject.attachTextObserver(this);
-		this.activated = false;
 	}
 	
 	public Boolean update(String text) {
 		if (!this.activated && text.equals(this.textToActivate))
 		{
-			switch(this.effect)
+			if (this.room.equals(this.subject.getLocation()) | this.room == null)
 			{
-				case("Add Item To Game"):
-					if(this.room != null)
-					{
-						int y = this.room.getFirst();
-						int x = this.room.getSecond();
-						GameFacade.board.maze[y][x].addAllItems(this.addItems);
-						if (!this.textToRoom.equals("None"))
-						{
-							GameFacade.board.maze[y][x].addText(this.textToRoom);
-						}
-						if (!this.textToPrint.equals("None"))
-						{
-							System.out.println(this.textToPrint);
-						}
-					}
-					break;
-				case("Delete Item From Game"):
-					if(this.room != null)
-					{
-						int y = this.room.getFirst();
-						int x = this.room.getSecond();
-						GameFacade.board.maze[y][x].removeAllItems(this.removeItems);
-						if (!this.textToRoom.equals("None"))
-						{
-							GameFacade.board.maze[y][x].addText(this.textToRoom);
-						}
-						if (!this.textToPrint.equals("None"))
-						{
-							System.out.println(this.textToPrint);
-						}
-					}
-					break;	
-				case("Win Game"):
-					if (!this.textToPrint.equals("None"))
-					{
-						System.out.println(this.textToPrint);
-					}
-					System.out.println("Congrats! You won!!!!");
-					GameFacade.running = false;
-					break;
-				case("Lose Game"):
-					if (!this.textToPrint.equals("None"))
-					{
-						System.out.println(this.textToPrint);
-					}
-					System.out.println("...you lost.");
-					GameFacade.running = false;
-					break;
-				case("Remove Barrier"):
+				switch(this.effect)
 				{
-					int y = this.room.getFirst();
-					int x = this.room.getSecond();
-					GameFacade.board.removeBarrier(this.room, this.direction);
-					if (!this.textToRoom.equals("None"))
-					{
-						GameFacade.board.maze[y][x].addText(this.textToRoom);
-					}
-					if (!this.textToPrint.equals("None"))
-					{
-						System.out.println(this.textToPrint);
-					}
+					case("Add Item To Game"):
+						if(this.room != null)
+						{
+							int y = this.room.getFirst();
+							int x = this.room.getSecond();
+							GameFacade.board.maze[y][x].addAllItems(this.addItems);
+							if (!this.textToRoom.equals("None"))
+							{
+								GameFacade.board.maze[y][x].addText(this.textToRoom);
+							}
+							if (!this.textToPrint.equals("None"))
+							{
+								System.out.println(this.textToPrint);
+							}
+						}
+						break;
+					case("Delete Item From Game"):
+						if(this.room != null)
+						{
+							int y = this.room.getFirst();
+							int x = this.room.getSecond();
+							GameFacade.board.maze[y][x].removeAllItems(this.removeItems);
+							if (!this.textToRoom.equals("None"))
+							{
+								GameFacade.board.maze[y][x].addText(this.textToRoom);
+							}
+							if (!this.textToPrint.equals("None"))
+							{
+								System.out.println(this.textToPrint);
+							}
+						}
+						break;	
+					case("Win Game"):
+						if (!this.textToPrint.equals("None"))
+						{
+							System.out.println(this.textToPrint);
+						}
+						System.out.println("Congrats! You won!!!!");
+						GameFacade.running = false;
+						break;
+					case("Lose Game"):
+						if (!this.textToPrint.equals("None"))
+						{
+							System.out.println(this.textToPrint);
+						}
+						System.out.println("...you lost.");
+						GameFacade.running = false;
+						break;
+					case("Remove Barrier"):
+						{
+							int y = this.room.getFirst();
+							int x = this.room.getSecond();
+							GameFacade.board.removeBarrier(this.room, this.direction);
+							if (!this.textToRoom.equals("None"))
+							{
+								GameFacade.board.maze[y][x].addText(this.textToRoom);
+							}
+							if (!this.textToPrint.equals("None"))
+							{
+								System.out.println(this.textToPrint);
+							}
+						}
+						break;
+					case("Print"):
+						{
+							System.out.println(this.textToPrint);
+							break;
+						}
 				}
-				break;
+
+				this.activated = true;
+				return true;
 			}
-			this.activated = true;
-			return true;
 		}
 		return false;
 	}

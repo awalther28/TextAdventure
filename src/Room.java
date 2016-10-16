@@ -76,7 +76,7 @@ public class Room {
 		if(this.items.size() > 0)
 			acc += "Items:" + this.items + "\n";
 		else
-			acc += "Items:none \n";
+			acc += "Items:none\n";
 		acc += this.directions + "\n";
 		return acc;
 	}
