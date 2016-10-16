@@ -81,6 +81,7 @@ public class Board {
 				ArrayList<String> acc = new ArrayList<String>();
 				//used to give introduction to text adventure
 				//TODO figure out why it isn't comparing correctly
+
 				if (s.equals("PRINT"))
 				{
 					acc.add(s);

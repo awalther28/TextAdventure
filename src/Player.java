@@ -138,6 +138,12 @@ public class Player extends MazeObject {
 				writer.newLine();
 			    if (GameFacade.board.hasPreface())
 			    	writer.write(GameFacade.board.prefaceToString());
+			    if(!GameFacade.board.hasPreface())
+			    {
+			    	writer.write("PRINT");
+			    	writer.newLine();
+			    	writer.write("END");
+			    }
 				writer.close();
 				System.out.println("Your game has been saved as: "+fileName+".txt");
 			} catch ( IOException e) {
