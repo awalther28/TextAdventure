@@ -119,38 +119,11 @@ None
 None
 Thank you so so much! Now I'm free!!! Want to grab some lunch? I'm starved.
 PRINT
-          ██▓███   ▒█████   ▒█████   ██▀███       ██████  ▄▄▄       ██▓███            
-         ▓██░  ██▒▒██▒  ██▒▒██▒  ██▒▓██ ▒ ██▒   ▒██    ▒ ▒████▄    ▓██░  ██▒          
-         ▓██░ ██▓▒▒██░  ██▒▒██░  ██▒▓██ ░▄█ ▒   ░ ▓██▄   ▒██  ▀█▄  ▓██░ ██▓▒          
-         ▒██▄█▓▒ ▒▒██   ██░▒██   ██░▒██▀▀█▄       ▒   ██▒░██▄▄▄▄██ ▒██▄█▓▒ ▒          
-         ▒██▒ ░  ░░ ████▓▒░░ ████▓▒░░██▓ ▒██▒   ▒██████▒▒ ▓█   ▓██▒▒██▒ ░  ░          
-         ▒▓▒░ ░  ░░ ▒░▒░▒░ ░ ▒░▒░▒░ ░ ▒▓ ░▒▓░   ▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░▒▓▒░ ░  ░          
-         ░▒ ░       ░ ▒ ▒░   ░ ▒ ▒░   ░▒ ░ ▒░   ░ ░▒  ░ ░  ▒   ▒▒ ░░▒ ░               
-         ░░       ░ ░ ░ ▒  ░ ░ ░ ▒    ░░   ░    ░  ░  ░    ░   ▒   ░░                 
-                      ░ ░      ░ ░     ░              ░        ░  ░                   
-                                                                                      
-             ▄▄▄       ███▄    █ ▓█████▄       ▄▄▄█████▓ ██░ ██ ▓█████                
-            ▒████▄     ██ ▀█   █ ▒██▀ ██▌      ▓  ██▒ ▓▒▓██░ ██▒▓█   ▀                
-            ▒██  ▀█▄  ▓██  ▀█ ██▒░██   █▌      ▒ ▓██░ ▒░▒██▀▀██░▒███                  
-            ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█▄   ▌      ░ ▓██▓ ░ ░▓█ ░██ ▒▓█  ▄                
-             ▓█   ▓██▒▒██░   ▓██░░▒████▓         ▒██▒ ░ ░▓█▒░██▓░▒████▒               
-             ▒▒   ▓▒█░░ ▒░   ▒ ▒  ▒▒▓  ▒         ▒ ░░    ▒ ░░▒░▒░░ ▒░ ░               
-              ▒   ▒▒ ░░ ░░   ░ ▒░ ░ ▒  ▒           ░     ▒ ░▒░ ░ ░ ░  ░               
-              ░   ▒      ░   ░ ░  ░ ░  ░         ░       ░  ░░ ░   ░                  
-                  ░  ░         ░    ░                    ░  ░  ░   ░  ░               
-                                  ░                                                   
- █     █░ ██▓ ▄████▄   ██ ▄█▀▓█████ ▓█████▄     █     █░ ██▓▄▄▄█████▓ ▄████▄   ██░ ██ 
-▓█░ █ ░█░▓██▒▒██▀ ▀█   ██▄█▒ ▓█   ▀ ▒██▀ ██▌   ▓█░ █ ░█░▓██▒▓  ██▒ ▓▒▒██▀ ▀█  ▓██░ ██▒
-▒█░ █ ░█ ▒██▒▒▓█    ▄ ▓███▄░ ▒███   ░██   █▌   ▒█░ █ ░█ ▒██▒▒ ▓██░ ▒░▒▓█    ▄ ▒██▀▀██░
-░█░ █ ░█ ░██░▒▓▓▄ ▄██▒▓██ █▄ ▒▓█  ▄ ░▓█▄   ▌   ░█░ █ ░█ ░██░░ ▓██▓ ░ ▒▓▓▄ ▄██▒░▓█ ░██ 
-░░██▒██▓ ░██░▒ ▓███▀ ░▒██▒ █▄░▒████▒░▒████▓    ░░██▒██▓ ░██░  ▒██▒ ░ ▒ ▓███▀ ░░▓█▒░██▓
-░ ▓░▒ ▒  ░▓  ░ ░▒ ▒  ░▒ ▒▒ ▓▒░░ ▒░ ░ ▒▒▓  ▒    ░ ▓░▒ ▒  ░▓    ▒ ░░   ░ ░▒ ▒  ░ ▒ ░░▒░▒
-  ▒ ░ ░   ▒ ░  ░  ▒   ░ ░▒ ▒░ ░ ░  ░ ░ ▒  ▒      ▒ ░ ░   ▒ ░    ░      ░  ▒    ▒ ░▒░ ░
-  ░   ░   ▒ ░░        ░ ░░ ░    ░    ░ ░  ░      ░   ░   ▒ ░  ░      ░         ░  ░░ ░
-    ░     ░  ░ ░      ░  ░      ░  ░   ░           ░     ░           ░ ░       ░  ░  ░
-             ░                       ░                               ░                
+
+					Poor Sap and Wicked Witch Adventure
+
 You are walking by a house and you hear screams, you think nothing of it because 
-Halloween is around the corner. Then a paper airplane lands at you feet. It reads: 
+Halloween is around the corner. Then a paper airplane lands at your feet. It reads: 
 	"	Listen, I'm in a pickle. I want to start by saying never marry a witch! 
 	To cut the long story short, my ex witch of a wife cast a spell on my
 	bedroom door--I'm afraid that it is locked for eternity.
@@ -167,12 +140,11 @@ Halloween is around the corner. Then a paper airplane lands at you feet. It read
 		   Thin I am fast, Fat I am slow. The wind is always my foe.
 		4. Hands she has but does not hold, teeth she has but does not bite, 
 		   feet she has but they are cold, eyes she has but without sight.
-		5. My first is not bent around. My second means “lift her up”
-		   or “cut her to the ground.
+		5. First word: not curved. Second word: it is very very sharp.
 	That is a total of 5 items; my house has 9 rooms which means there may not be 
 	one in every room. Please try to hurry, I've been trapped in here for a few days 
 	and I am without water and food."
 After reading the plea of a scorned ex-witch's lover, you take it upon
 yourself to help the poor sap out.
-Enter a command:
+
 END

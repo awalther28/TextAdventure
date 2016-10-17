@@ -55,11 +55,14 @@ public class Board {
 			String s = stream.readLine();
 			while(s != null)
 			{
+				
+				ArrayList<String> acc = new ArrayList<String>();
 				if (s.equals("Trigger"))
 				{
 					String allInfo[] = {stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine()};
 					if( allInfo[1].equals("Enter Text"))
 					{
+						System.out.println("new");
 						TextObserverFactory.createTextObserver(allInfo);
 					}
 					if( allInfo[1].equals("Items In Inventory"))
@@ -75,13 +78,9 @@ public class Board {
 				if (s.equals("Previously"))
 				{
 					GameFacade.player.setItems(ItemsFactory.getItems(stream.readLine()));
-					s = stream.readLine();
 				}
-				
-				ArrayList<String> acc = new ArrayList<String>();
-				//used to give introduction to text adventure
-				//TODO figure out why it isn't comparing correctly
 
+				//used to give introduction to text adventure
 				if (s.equals("PRINT"))
 				{
 					acc.add(s);
@@ -107,6 +106,7 @@ public class Board {
 			this.playerLocation = new Tuple(Integer.parseInt(playerStart[0]), Integer.parseInt(playerStart[1]));
 			GameFacade.player.setLocation(this.playerLocation);
 			
+			System.out.println("Enter command: ");
 			fileReader.close();
 			stream.close();
 		}

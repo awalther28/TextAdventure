@@ -34,13 +34,13 @@ Add Item To Game
 None
 README.txt file
 None
-C'mon, you couldn't have thought winning would be that simple. I dropped a README.txt file in this room, bring it back to where you began to beat the tutorial.
+C'mon, you couldn't have thought winning would be that simple. I dropped a README.txt file in this room, type "read" to win the game.
 Trigger
 Not Activated
 Enter Text
-read README.txt file
+read
 Win Game
-0,0
+None
 None
 None
 None
@@ -54,7 +54,7 @@ Remove Barrier
  You removed the wall!
 None
 None
-You removed the barrier room 5 and the super secret room!
+You removed the barrier the room above, it leads to a super secret room!
 PRINT
 Dave: Heyo River! Welcome to Alli's Text Adventure Emulator! This is a tutorial,
 feel free to walk around the maze and get a better feel for how the game works.

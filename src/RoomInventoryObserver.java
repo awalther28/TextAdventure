@@ -134,27 +134,27 @@ public class RoomInventoryObserver {
 	public String toString()
 	{
 		String acc = "";
-		acc += "Trigger \n";
+		acc += "Trigger\n";
 		if(this.activated)
-			acc+="Activated \n";
+			acc+="Activated\n";
 		else
-			acc+="Not Activated \n";
-		acc+="Items In Rooms \n";
+			acc+="Not Activated\n";
+		acc+="Items In Rooms\n";
 		acc+=this.specialHashTableToString();
-		acc+=this.effect + " \n";
+		acc+=this.effect + "\n";
 		if(this.room != null)
 		{
 			acc+=this.room;
 			if(this.effect.equals("Remove Barrier"))
 				acc+=","+this.direction;
-			acc+=" \n";
+			acc+="\n";
 		}
 		else
-			acc+="None \n";
-		acc+= this.textToRoom + " \n";
-		acc+= this.addItems.toString() + " \n";
-		acc+= this.removeItems.toString() + " \n";
-		acc+= this.textToPrint + " \n";	
+			acc+="None\n";
+		acc+= this.textToRoom + "\n";
+		acc+= this.addItems.toString() + "\n";
+		acc+= this.removeItems.toString() + "\n";
+		acc+= this.textToPrint + "\n";	
 		return acc;
 	}
 	

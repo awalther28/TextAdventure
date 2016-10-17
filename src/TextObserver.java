@@ -26,112 +26,114 @@ public class TextObserver { //extends Observer {
 	public Boolean update(String text) {
 		if (!this.activated && text.equals(this.textToActivate))
 		{
-			if (this.room.equals(this.subject.getLocation()) | this.room == null)
-			{
-				switch(this.effect)
-				{
-					case("Add Item To Game"):
-						if(this.room != null)
-						{
-							int y = this.room.getFirst();
-							int x = this.room.getSecond();
-							GameFacade.board.maze[y][x].addAllItems(this.addItems);
-							if (!this.textToRoom.equals("None"))
-							{
-								GameFacade.board.maze[y][x].addText(this.textToRoom);
-							}
-							if (!this.textToPrint.equals("None"))
-							{
-								System.out.println(this.textToPrint);
-							}
-						}
-						break;
-					case("Delete Item From Game"):
-						if(this.room != null)
-						{
-							int y = this.room.getFirst();
-							int x = this.room.getSecond();
-							GameFacade.board.maze[y][x].removeAllItems(this.removeItems);
-							if (!this.textToRoom.equals("None"))
-							{
-								GameFacade.board.maze[y][x].addText(this.textToRoom);
-							}
-							if (!this.textToPrint.equals("None"))
-							{
-								System.out.println(this.textToPrint);
-							}
-						}
-						break;	
-					case("Win Game"):
-						if (!this.textToPrint.equals("None"))
-						{
-							System.out.println(this.textToPrint);
-						}
-						System.out.println("Congrats! You won!!!!");
-						GameFacade.running = false;
-						break;
-					case("Lose Game"):
-						if (!this.textToPrint.equals("None"))
-						{
-							System.out.println(this.textToPrint);
-						}
-						System.out.println("...you lost.");
-						GameFacade.running = false;
-						break;
-					case("Remove Barrier"):
-						{
-							int y = this.room.getFirst();
-							int x = this.room.getSecond();
-							GameFacade.board.removeBarrier(this.room, this.direction);
-							if (!this.textToRoom.equals("None"))
-							{
-								GameFacade.board.maze[y][x].addText(this.textToRoom);
-							}
-							if (!this.textToPrint.equals("None"))
-							{
-								System.out.println(this.textToPrint);
-							}
-						}
-						break;
-					case("Print"):
-						{
-							System.out.println(this.textToPrint);
-							break;
-						}
-				}
-
-				this.activated = true;
+				this.activateTrigger();
 				return true;
-			}
 		}
 		return false;
 	}
 	
+	
+	
+	private void activateTrigger() {
+		switch(this.effect)
+		{
+			case("Add Item To Game"):
+				if(this.room != null)
+				{
+					int y = this.room.getFirst();
+					int x = this.room.getSecond();
+					GameFacade.board.maze[y][x].addAllItems(this.addItems);
+					if (!this.textToRoom.equals("None"))
+					{
+						GameFacade.board.maze[y][x].addText(this.textToRoom);
+					}
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
+				}
+				break;
+			case("Delete Item From Game"):
+				if(this.room != null)
+				{
+					int y = this.room.getFirst();
+					int x = this.room.getSecond();
+					GameFacade.board.maze[y][x].removeAllItems(this.removeItems);
+					if (!this.textToRoom.equals("None"))
+					{
+						GameFacade.board.maze[y][x].addText(this.textToRoom);
+					}
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
+				}
+				break;	
+			case("Win Game"):
+				if (!this.textToPrint.equals("None"))
+				{
+					System.out.println(this.textToPrint);
+				}
+				System.out.println("Congrats! You won!!!!");
+				GameFacade.running = false;
+				break;
+			case("Lose Game"):
+				if (!this.textToPrint.equals("None"))
+				{
+					System.out.println(this.textToPrint);
+				}
+				System.out.println("...you lost.");
+				GameFacade.running = false;
+				break;
+			case("Remove Barrier"):
+				{
+					int y = this.room.getFirst();
+					int x = this.room.getSecond();
+					GameFacade.board.removeBarrier(this.room, this.direction);
+					if (!this.textToRoom.equals("None"))
+					{
+						GameFacade.board.maze[y][x].addText(this.textToRoom);
+					}
+					if (!this.textToPrint.equals("None"))
+					{
+						System.out.println(this.textToPrint);
+					}
+				}
+				break;
+			case("Print"):
+				{
+					System.out.println(this.textToPrint);
+					break;
+				}
+		}
+		this.activated = true;
+	}
+
 	@Override
 	public String toString()
 	{
 		String acc = "";
-		acc += "Trigger \n";
+		acc += "Trigger\n";
 		if(this.activated)
-			acc+="Activated \n";
+			acc+="Activated\n";
 		else
-			acc+="Not Activated \n";
-		acc+="Enter Text \n";
-		acc+=this.textToActivate + " \n";
-		acc+=this.effect + " \n";
+			acc+="Not Activated\n";
+		acc+="Enter Text\n";
+		acc+=this.textToActivate + "\n";
+		acc+=this.effect + "\n";
 		if(this.room != null)
 		{
 			acc+=this.room;
 			if(this.effect.equals("Remove Barrier"))
 				acc+=","+this.direction;
-			acc+=" \n";
+			acc+="\n";
 		}
 		else
-			acc+="None \n";
-		acc+= this.textToRoom + " \n";
-		acc+= this.addItems.toString() + " \n";
-		acc+= this.removeItems.toString() + " \n";
-		acc+= this.textToPrint + " \n";	
+			acc+="None\n";
+		acc+= this.textToRoom + "\n";
+		acc+= this.addItems.toString() + "\n";
+		acc+= this.removeItems.toString() + "\n";
+		acc+= this.textToPrint + "\n";	
 		return acc;
 	}
 	

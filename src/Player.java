@@ -137,7 +137,10 @@ public class Player extends MazeObject {
 				writer.write("Items:"+this.items.toString());
 				writer.newLine();
 			    if (GameFacade.board.hasPreface())
+			    {
+					writer.newLine();
 			    	writer.write(GameFacade.board.prefaceToString());
+			    }
 			    if(!GameFacade.board.hasPreface())
 			    {
 			    	writer.write("PRINT");
