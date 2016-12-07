@@ -62,7 +62,6 @@ public class Board {
 					String allInfo[] = {stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine(), stream.readLine()};
 					if( allInfo[1].equals("Enter Text"))
 					{
-						System.out.println("new");
 						TextObserverFactory.createTextObserver(allInfo);
 					}
 					if( allInfo[1].equals("Items In Inventory"))
@@ -213,7 +212,7 @@ public class Board {
 		}
 
 		//parameter: HashTable of room, item pair
-		//checks the rooms listed in the hashtable to see if they have it has the items
+		//checks the rooms listed in the hashtable to see if they have all the items
 		//returns true if all of the rooms contain all of the necessary items
 		//otherwise returns false
 		public boolean checkRooms(
